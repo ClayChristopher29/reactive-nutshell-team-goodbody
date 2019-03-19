@@ -27,7 +27,7 @@ export default class NewsEditForm extends Component {
         title: this.state.title,
         synopsis: this.state.synopsis,
         url: this.state.url,
-        newsId: parseInt(this.state.newsId)
+        // newsId: parseInt(this.state.newsId)
       };
 
       this.props
