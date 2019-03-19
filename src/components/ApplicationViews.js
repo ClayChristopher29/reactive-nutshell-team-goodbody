@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Register from './authentication/register'
 
 import RegisterManager from './modules/registerManager'
+import ChatList from "./chat/chatList";
 
 export default class ApplicationViews extends Component {
 
@@ -42,7 +43,10 @@ RegisterManager.postUser(userObject);
 
         <Route
           path="/messages" render={props => {
-            return null
+            return (
+              <ChatList
+              {...props}
+            )
             // Remove null and return the component which will show the messages
           }}
         />
