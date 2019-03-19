@@ -70,7 +70,7 @@ export default class NewsEditForm extends Component {
               className="form-control"
               onChange={this.handleFieldChange}
               id="synopsis"
-              placeholder="synopsis"
+              value={this.state.synopsis}
             />
           </div>
           <div className="form-group">
@@ -81,7 +81,7 @@ export default class NewsEditForm extends Component {
               className="form-control"
               onChange={this.handleFieldChange}
               id="url"
-              placeholder="url"
+              value={this.state.url}
             />
           </div>
           <button

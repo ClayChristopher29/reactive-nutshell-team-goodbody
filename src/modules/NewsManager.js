@@ -3,13 +3,7 @@ const NewsAPIManager = {
         return fetch ("http://localhost:5002/news")
         .then(news => news.json())
     },
-    deleteNewsArticle: (id) => {
-        return fetch (`http://localhost:5002/news/${id}`, {
-        method: "DELETE"
-    })
-        .then(()=> fetch(`http://localhost:5002/news`))
-        .then(r=>r.json())
-},
+
 getOneArticle: id =>
 fetch(`http://localhost:5002/news/${id}`).then(news => news.json()),
 put(editedArticle) {
@@ -20,6 +14,14 @@ return fetch(`http://localhost:5002/news/${editedArticle.id}`, {
   },
   body: JSON.stringify(editedArticle)
 }).then(data => data.json());
+},
+
+deleteNewsArticle: (id) => {
+  return fetch (`http://localhost:5002/news/${id}`, {
+  method: "DELETE"
+})
+  .then(()=> fetch(`http://localhost:5002/news`))
+  .then(r=>r.json())
 },
 
 addNewsArticle(newArticle) {
