@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import RegisterManager from '../modules/registerManager'
+import RegisterManager from '../../modules/registerManager'
 export default class Register extends Component {
 // set initial state for Registration
 state = {

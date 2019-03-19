@@ -8,8 +8,11 @@ import NewsEditForm from './news/NewsEditForm'
 
 import Register from './authentication/register'
 
-import RegisterManager from './modules/registerManager'
+import RegisterManager from '../modules/registerManager'
+import ChatManager from '../modules/chatManager'
+
 import ChatList from "./chat/chatList";
+import ChatForm from "./chat/chatForm"
 
 export default class ApplicationViews extends Component {
 
@@ -22,8 +25,28 @@ export default class ApplicationViews extends Component {
     friends: []
   }
 
+  addMessage = messageObject =>
+    ChatManager.addMessage(messageObject);
+
+  deleteMessage = id => {
+      return ChatManager.deleteMessage(id).then(messages =>
+        this.setState({
+          messages: messages
+        })
+      );
+    };
+  updateMessage = (editedMessage) => {
+      return ChatManager.put(editedMessage)
+        .then(() => ChatManager.getAllMessages())
+        .then(messages => {
+          this.setState({
+            messages: messages
+          })
+        });
+    };
+
   registerUser = userObject =>
-RegisterManager.postUser(userObject);
+    RegisterManager.postUser(userObject);
 
   addNewsArticle = newsObject =>
     NewsAPIManager.addNewsArticle(newsObject)
@@ -55,24 +78,30 @@ RegisterManager.postUser(userObject);
       .then(news => (newState.news = news))
       .then(() => this.setState(newState));
   }
+
   render() {
     return (
-      <React.Fragment>
+
+      <div className="container-div">
 
         <Route
-          path="/"
+
+          exact path="/"
           render={props => {
             return (
               <Register
-              {...props}
-              registerUser={this.registerUser}/>
-            // Remove null and return the component which will show news articles
-            )}}
+                {...props}
+                registerUser={this.registerUser} />
+
+              // Remove null and return the component which will show news articles
+            )
+          }}
         />
 
         <Route exact path="/news" render={(props) => {
           return <NewsList {...props} news={this.state.news} />
         }} />
+
         <Route path="/news/new" render={props => {
           return (<NewsForm {...props}
             addNewsArticle={this.addNewsArticle}
@@ -81,7 +110,8 @@ RegisterManager.postUser(userObject);
         }} />
         <Route path="/news/:newsId(\d+)" render={(props) => {
           return (<NewsDetail {...props} deleteNewsArticle={this.deleteNewsArticle} news={this.state.news} />
-          )}} />
+          )
+        }} />
         <Route
           path="/news/:newsId(\d+)/edit"
           render={props => {
@@ -98,7 +128,11 @@ RegisterManager.postUser(userObject);
           path="/messages" render={props => {
             return (
               <ChatList
-              {...props}/>
+                {...props} messages={this.state.messages}/>,
+              <ChatForm
+                {...props} addMessage={this.addMessage}/>
+
+
             )
             // Remove null and return the component which will show the messages
           }}
@@ -111,7 +145,7 @@ RegisterManager.postUser(userObject);
           }}
         />
 
-      </React.Fragment>
+      </div>
     );
   }
 }
