@@ -6,7 +6,10 @@
 //             <React.Fragment>
 //                 <div className="messageBoardContainer">
 //                 <section className="messages">
-//                 {this.props.}
+//                 {this.props.messages.map(singleMessage => (
+//                     div key={singleMessage.id}
+//                 ))}
+
 
 //                 <button type="button"
 //                  className"btn btn-success
