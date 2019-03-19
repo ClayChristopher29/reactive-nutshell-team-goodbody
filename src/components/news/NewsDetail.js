@@ -21,13 +21,32 @@ export default class NewsDetail extends Component {
                             {news.title}
                         </h4>
                         <h6 className="card-title">{news.synopsis}</h6>
-                        <a href="#"
-                            onClick={() => this.props.deleteNewsArticle(news.id)
-                                .then(() => this.props.history.push("/news"))}
-                            className="card-link">Delete</a>
-                    </div>
-                </div>
-            </section>
-        )
-    }
+
+            <button
+              href="#"
+              className="btn btn-danger"
+              onClick={() =>
+                this.props
+                  .deleteNewsArticle(news.id)
+                  .then(() => this.props.history.push("/news"))
+              }
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={() => {
+                this.props.history.push(
+                  `/news/${news.id}/edit`
+                );
+              }}
+            >
+              Edit
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 }

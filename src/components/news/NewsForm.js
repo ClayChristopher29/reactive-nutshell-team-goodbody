@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import "./News.css";
+import NewsAPIManager from '../../modules/NewsManager'
 
 export default class NewsForm extends Component {
   // Set initial state
@@ -24,7 +25,7 @@ export default class NewsForm extends Component {
      */
   constructNewsArticle = evt => {
     evt.preventDefault();
-    if (this.state.news === "") {
+    if (this.state.title === "") {
       window.alert("Please enter a news article");
     } else {
       const news = {
@@ -36,6 +37,7 @@ export default class NewsForm extends Component {
       };
 
       // Create the animal and redirect user to animal list
+
       this.props.addNewsArticle(news)
         .then(() => this.props.history.push("/news"));
     }
