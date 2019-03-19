@@ -14,13 +14,13 @@ export default class NewsDetail extends Component {
 
         return (
             <section className="news">
-                <div key={news.id} className="card">
-                    <div className="card-body">
-                        <h4 className="card-title">
+                <div key={news.id} className="news-card">
+                    <div className="news-card-body">
+                        <h4 className="news-card-title">
                             {/* <img src={dog} className="empicon--dog" /> */}
                             {news.title}
                         </h4>
-                        <h6 className="card-title">{news.synopsis}</h6>
+                        <h6 className="news-card-title">{news.synopsis}</h6>
 
             <button
               href="#"
