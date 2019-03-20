@@ -12,22 +12,25 @@ export default class chatList extends Component {
     // clicked on and turn it into an input with a prepopulated message
     constructEditMessage = evt => {
         evt.preventDefault();
-        if (this.state.title === "") {
-          window.alert("You have not entered a message");
+        if (this.state.message === "") {
+            window.alert("You have not entered a message");
         } else {
-          const editedMessage = {
-            message: this.state.message,
-            messageToEdit:""
-            // Make sure the employeeId is saved to the database as a number since it is a foreign key.
+            const editedMessage = {
+                message: this.state.message,
+                id: this.state.messageToEdit.id
+                // Make sure the employeeId is saved to the database as a number since it is a foreign key.
 
-          };
+            };
 
-          // Create the animal and redirect user to animal list
+            // Create the message and redirect user to animal list
 
-          this.props.updateMessage(editedMessage)
-            .then(() => this.props.history.push("/messages"));
-        }
-      };
+            this.props.updateMessage(editedMessage)
+                .then(() => this.props.history.push("/messages"))
+                .then(this.setState({
+                    messageToEdit: ""
+                })
+                )
+    }};
 
     handleEditFieldChange = evt => {
         const stateToChange = {};
@@ -55,7 +58,7 @@ export default class chatList extends Component {
                                             type="text"
                                             required
                                             className="form-control"
-                                            onChange={this.handleFieldChange}
+                                            onChange={this.handleEditFieldChange}
                                             id="message"
                                             placeholder={this.state.messageToEdit.message}
                                         />
@@ -65,15 +68,10 @@ export default class chatList extends Component {
                                     <button type="button"
                                         className="btn btn-success"
                                         id={singleMessage.id}
-                                        onClick={() => {
-                                            console.log("This is in the if statement running")
+                                        onClick={
+                                            this.constructEditMessage
 
-                                            this.setState({
-                                                message: singleMessage,
-                                                messageToEdit: ""
-                                            })
-
-                                        }}
+                                        }
                                     >Save
                             </button>
                                 </div>
@@ -88,7 +86,6 @@ export default class chatList extends Component {
                                         className="btn btn-success"
                                         id={singleMessage.id}
                                         onClick={() => {
-                                            console.log("This is the else statement running", singleMessage.message)
                                             this.setState({
                                                 messageToEdit: singleMessage
                                             })
