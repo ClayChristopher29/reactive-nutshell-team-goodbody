@@ -1,5 +1,6 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+
 import NewsList from './news/NewsList'
 import NewsForm from './news/NewsForm'
 import NewsAPIManager from '../modules/NewsManager'
@@ -11,8 +12,10 @@ import Register from './authentication/register'
 import RegisterManager from '../modules/registerManager'
 import ChatManager from '../modules/chatManager'
 
-import ChatList from "./chat/chatList";
+import ChatList from "./chat/chatList"
 import ChatForm from "./chat/chatForm"
+import Chat from "./chat/chat"
+import chatManager from "../modules/chatManager";
 
 export default class ApplicationViews extends Component {
 
@@ -26,7 +29,12 @@ export default class ApplicationViews extends Component {
   }
 
   addMessage = messageObject =>
-    ChatManager.addMessage(messageObject);
+    ChatManager.addMessage(messageObject).then(() =>
+    chatManager.getAllMessages()).then(messages =>
+      this.setState({
+        messages: messages
+      })
+    );
 
   deleteMessage = id => {
       return ChatManager.deleteMessage(id).then(messages =>
@@ -76,6 +84,8 @@ export default class ApplicationViews extends Component {
     const newState = {};
     NewsAPIManager.getAllNews()
       .then(news => (newState.news = news))
+      .then(chatManager.getAllMessages)
+      .then(messages =>(newState.messages = messages))
       .then(() => this.setState(newState));
   }
 
@@ -127,12 +137,13 @@ export default class ApplicationViews extends Component {
         <Route
           path="/messages" render={props => {
             return (
-              <ChatList
-                {...props} messages={this.state.messages}/>,
-              <ChatForm
-                {...props} addMessage={this.addMessage}/>
-
-
+              <Chat
+              {...props}
+              messages={this.state.messages}
+              addMessage={this.addMessage}
+              deleteMessage={this.deleteMessage}
+              updateMessage={this.updateMessage}
+              />
             )
             // Remove null and return the component which will show the messages
           }}

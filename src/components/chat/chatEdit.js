@@ -5,8 +5,7 @@ export default class NewsEditForm extends Component {
   // Set initial state
   state = {
     message: "",
-    messageId: "",
-    userId: ""
+    messageToEdit: ""
   };
 
   handleFieldChange = evt => {
@@ -22,25 +21,22 @@ export default class NewsEditForm extends Component {
       window.alert("Please enter a message");
     } else {
       const editedMessage = {
-        id: this.props.match.params.newsId,
-        title: this.state.title,
-        synopsis: this.state.synopsis,
-        url: this.state.url,
-        newsId: parseInt(this.state.newsId)
+        message: this.state.message,
+        id: this.props.match.params.id,
+
       };
 
       this.props
-        .updateArticle(editedMessage)
-        .then(() => this.props.history.push("/news"));
+        .updateMessage(editedMessage)
+        .then(() => this.props.history.push("/messages"));
     }
   };
 
   componentDidMount() {
-    chatManager.getOneMessage(this.props.match.params.messageId).then(chat => {
+    chatManager.getOneMessage(this.props.match.params.id).then(chat => {
       this.setState({
         message: chat.message,
-        messageId: chat.messageId,
-        userId: chat.userId
+
       });
     });
   }

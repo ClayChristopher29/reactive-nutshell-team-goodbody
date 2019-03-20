@@ -7,7 +7,7 @@ export default {
     getOneMessage: id =>
 fetch(`http://localhost:5002/messages/${id}`).then(chats => chats.json()),
 put(editedMessage) {
-return fetch(`http://localhost:5002/news/${editedMessage.id}`, {
+return fetch(`http://localhost:5002/messages/${editedMessage.id}`, {
   method: "PUT",
   headers: {
     "Content-Type": "application/json"
