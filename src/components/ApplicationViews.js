@@ -1,15 +1,18 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+
 import NewsList from './news/NewsList'
 import NewsForm from './news/NewsForm'
 import NewsAPIManager from '../modules/NewsManager'
 import NewsDetail from './news/NewsDetail'
 import NewsEditForm from './news/NewsEditForm'
+
 import EventEditForm from './events/EventEditForm'
 import EventDetail from './events/EventDetail'
 import EventForm from './events/EventForm'
 import EventsList from './events/EventList'
 import EventAPIManager from '../modules/EventsManager'
+
 import TaskDetail from './tasks/TaskDetail'
 import TaskEditForm from './tasks/TaskEditForm'
 import TaskForm from './tasks/TaskForm'
