@@ -19,9 +19,9 @@ class NewsList extends Component {
             <section className="news">
             {
                 this.props.news.map(news =>
-                    <div key={news.id} className="card">
-                        <div className="card-body">
-                            <h5 className="card-title">
+                    <div key={news.id} className="news-card">
+                        <div className="news-card-body">
+                            <h5 className="news-card-title">
 
                                 {news.title}
                                 <Link className="nav-link" to={`/news/${news.id}`}>Details</Link>

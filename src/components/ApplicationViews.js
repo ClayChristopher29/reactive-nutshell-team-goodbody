@@ -5,6 +5,16 @@ import NewsForm from './news/NewsForm'
 import NewsAPIManager from '../modules/NewsManager'
 import NewsDetail from './news/NewsDetail'
 import NewsEditForm from './news/NewsEditForm'
+import EventEditForm from './events/EventEditForm'
+import EventDetail from './events/EventDetail'
+import EventForm from './events/EventForm'
+import EventsList from './events/EventList'
+import EventAPIManager from '../modules/EventsManager'
+import TaskDetail from './tasks/TaskDetail'
+import TaskEditForm from './tasks/TaskEditForm'
+import TaskForm from './tasks/TaskForm'
+import TaskList from './tasks/TaskList'
+import TaskAPIManager from '../modules/TasksManager'
 
 export default class ApplicationViews extends Component {
 
@@ -40,11 +50,69 @@ export default class ApplicationViews extends Component {
         })
       });
   };
+  addTask = taskObject =>
+    TaskAPIManager.addTask(taskObject)
+      .then(() => TaskAPIManager.getAllTasks()).then(tasks =>
+        this.setState({
+          tasks: tasks
+        })
+      );
+  deleteTask = id => {
+    return TaskAPIManager.deleteTask(id).then(tasks =>
+      this.setState({
+        tasks: tasks
+      })
+    );
+  };
+  updateTask = (editedTaskObject) => {
+    return TaskAPIManager.put(editedTaskObject)
+      .then(() => TaskAPIManager.getAllTasks())
+      .then(tasks => {
+        this.setState({
+          tasks: tasks
+        })
+      });
+  };
+  completeTask = (taskObject, taskId) => {
+    return TaskAPIManager.completeTask(taskObject, taskId)
+    .then(() => TaskAPIManager.getAllTasks())
+    .then(tasks => this.setState({
+      tasks: tasks
+    }))
+  }
+  addEvent = eventObject =>
+    EventAPIManager.addEvent(eventObject)
+      .then(() => EventAPIManager.getAllEvents()).then(events =>
+        this.setState({
+          events: events
+        })
+      );
+  deleteEvent = id => {
+    return EventAPIManager.deleteEvent(id).then(events =>
+      this.setState({
+        events: events
+      })
+    );
+  };
+  updateEvent = (editedEventObject) => {
+    return EventAPIManager.put(editedEventObject)
+      .then(() => EventAPIManager.getAllEvents())
+      .then(events => {
+        this.setState({
+          events: events
+        })
+      });
+  };
+
 
   componentDidMount() {
     const newState = {};
     NewsAPIManager.getAllNews()
       .then(news => (newState.news = news))
+      .then(EventAPIManager.getAllEvents)
+      .then(events => (newState.events = events))
+      .then(TaskAPIManager.getAllTasks)
+      .then(tasks => (newState.tasks = tasks))
       .then(() => this.setState(newState));
   }
   render() {
@@ -67,17 +135,42 @@ export default class ApplicationViews extends Component {
             news={this.state.news} />
           )
         }} />
-        <Route path="/news/:newsId(\d+)" render={(props) => {
+        <Route exact path="/news/:newsId(\d+)" render={(props) => {
           return (<NewsDetail {...props} deleteNewsArticle={this.deleteNewsArticle} news={this.state.news} />
-          )}} />
+          )
+        }} />
         <Route
-          path="/news/:newsId(\d+)/edit"
+          exact path="/news/:newsId(\d+)/edit"
           render={props => {
             return (
               <NewsEditForm
                 {...props}
                 // news={this.state.news}
                 updateArticle={this.updateArticle}
+              />
+            );
+          }}
+        />
+        <Route exact path="/events" render={(props) => {
+          return <EventsList {...props} events={this.state.events} />
+        }} />
+        <Route exact path="/events/new" render={props => {
+          return (<EventForm {...props}
+            addEvent={this.addEvent}
+            events={this.state.events} />
+          )
+        }} />
+        <Route exact path="/events/:eventId(\d+)" render={(props) => {
+          return (<EventDetail {...props} deleteEvent={this.deleteEvent} events={this.state.events} />
+          )
+        }} />
+        <Route
+          exact path="/events/:eventId(\d+)/edit"
+          render={props => {
+            return (
+              <EventEditForm
+                {...props}
+                updateEvent={this.updateEvent}
               />
             );
           }}
@@ -89,10 +182,28 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+        <Route exact path="/tasks" render={(props) => {
+          return <TaskList {...props} tasks={this.state.tasks} completeTask={this.completeTask}/>
+        }} />
+        <Route exact path="/tasks/new" render={props => {
+          return (<TaskForm {...props}
+            addTask={this.addTask}
+            tasks={this.state.tasks} />
+          )
+        }} />
+        <Route path="/tasks/:taskId(\d+)" render={(props) => {
+          return (<TaskDetail {...props} deleteTask={this.deleteTask} tasks={this.state.tasks} />
+          )
+        }} />
         <Route
-          path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
+          exact path="/tasks/:taskId(\d+)/edit"
+          render={props => {
+            return (
+              <TaskEditForm
+                {...props}
+                updateTask={this.updateTask}
+              />
+            );
           }}
         />
         <Route
