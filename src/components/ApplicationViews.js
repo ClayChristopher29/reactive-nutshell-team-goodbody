@@ -1,20 +1,33 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+
 import NewsList from './news/NewsList'
 import NewsForm from './news/NewsForm'
 import NewsAPIManager from '../modules/NewsManager'
 import NewsDetail from './news/NewsDetail'
 import NewsEditForm from './news/NewsEditForm'
+
 import EventEditForm from './events/EventEditForm'
 import EventDetail from './events/EventDetail'
 import EventForm from './events/EventForm'
 import EventsList from './events/EventList'
 import EventAPIManager from '../modules/EventsManager'
+
 import TaskDetail from './tasks/TaskDetail'
 import TaskEditForm from './tasks/TaskEditForm'
 import TaskForm from './tasks/TaskForm'
 import TaskList from './tasks/TaskList'
 import TaskAPIManager from '../modules/TasksManager'
+
+import Register from './authentication/register'
+
+import RegisterManager from '../modules/registerManager'
+import ChatManager from '../modules/chatManager'
+
+import ChatList from "./chat/chatList"
+import ChatForm from "./chat/chatForm"
+import Chat from "./chat/chat"
+import chatManager from "../modules/chatManager";
 
 export default class ApplicationViews extends Component {
 
@@ -26,6 +39,34 @@ export default class ApplicationViews extends Component {
     news: [],
     friends: []
   }
+
+  addMessage = messageObject =>
+    ChatManager.addMessage(messageObject).then(() =>
+    chatManager.getAllMessages()).then(messages =>
+      this.setState({
+        messages: messages
+      })
+    );
+
+  deleteMessage = id => {
+      return ChatManager.deleteMessage(id).then(messages =>
+        this.setState({
+          messages: messages
+        })
+      );
+    };
+  updateMessage = (editedMessage) => {
+      return ChatManager.put(editedMessage)
+        .then(() => ChatManager.getAllMessages())
+        .then(messages => {
+          this.setState({
+            messages: messages
+          })
+        });
+    };
+
+  registerUser = userObject =>
+    RegisterManager.postUser(userObject);
 
   addNewsArticle = newsObject =>
     NewsAPIManager.addNewsArticle(newsObject)
@@ -109,26 +150,38 @@ export default class ApplicationViews extends Component {
     const newState = {};
     NewsAPIManager.getAllNews()
       .then(news => (newState.news = news))
+      .then(chatManager.getAllMessages)
+      .then(messages =>(newState.messages = messages))
       .then(EventAPIManager.getAllEvents)
       .then(events => (newState.events = events))
       .then(TaskAPIManager.getAllTasks)
       .then(tasks => (newState.tasks = tasks))
       .then(() => this.setState(newState));
   }
+
   render() {
     return (
-      <React.Fragment>
+
+      <div className="container-div">
 
         <Route
-          exact path="/" render={props => {
-            return null
-            // Remove null and return the component which will show news articles
+
+          exact path="/"
+          render={props => {
+            return (
+              <Register
+                {...props}
+                registerUser={this.registerUser} />
+
+              // Remove null and return the component which will show news articles
+            )
           }}
         />
 
         <Route exact path="/news" render={(props) => {
           return <NewsList {...props} news={this.state.news} />
         }} />
+
         <Route path="/news/new" render={props => {
           return (<NewsForm {...props}
             addNewsArticle={this.addNewsArticle}
@@ -177,7 +230,15 @@ export default class ApplicationViews extends Component {
         />
         <Route
           path="/messages" render={props => {
-            return null
+            return (
+              <Chat
+              {...props}
+              messages={this.state.messages}
+              addMessage={this.addMessage}
+              deleteMessage={this.deleteMessage}
+              updateMessage={this.updateMessage}
+              />
+            )
             // Remove null and return the component which will show the messages
           }}
         />
@@ -206,14 +267,8 @@ export default class ApplicationViews extends Component {
             );
           }}
         />
-        <Route
-          path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
-          }}
-        />
 
-      </React.Fragment>
+      </div>
     );
   }
 }
