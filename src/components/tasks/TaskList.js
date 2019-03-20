@@ -34,22 +34,23 @@ class TaskList extends Component {
                                 <h6 className="task-card-date">{task.dueDate}</h6>
                                 <label>Complete?
                                 <input
-                                    type="checkbox"
-                                    onChange={() =>
-                                        this.props.completeTask({ complete: true }, task.id)
-                                    }
-                                />
+                                        type="checkbox"
+                                        onChange={() =>
+                                            this.props.completeTask({ complete: true }, task.id)
+                                        }
+                                    />
                                 </label>
                                 <Link className="nav-link" to={`/tasks/${task.id}`}>Details</Link>
 
                             </div>
                         </div>
-                        )})
+                        )
+                    })
                     }
-            </section>
+                </section>
             </React.Fragment>
-                );
-            }
-        }
+        );
+    }
+}
 
 export default TaskList;
