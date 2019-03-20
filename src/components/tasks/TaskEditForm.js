@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import EventAPIManager from "../../modules/EventsManager";
+import TaskAPIManager from "../../modules/TasksManager";
 
-export default class EventEditForm extends Component {
+export default class TaskEditForm extends Component {
   // Set initial state
   state = {
-    title: "",
-    location: "",
-    date: ""
+    name: "",
+    description: "",
+    dueDate: "",
+    complete: false
   };
 
   handleFieldChange = evt => {
@@ -15,31 +16,33 @@ export default class EventEditForm extends Component {
     this.setState(stateToChange);
   };
 
-  updateExistingEvent = evt => {
+  updateExistingTask = evt => {
     evt.preventDefault();
 
-    if (this.state.title === "") {
-      window.alert("Please enter a title");
+    if (this.state.description === "") {
+      window.alert("Please enter a task");
     } else {
-      const editedEvent = {
-        id: this.props.match.params.eventId,
-        title: this.state.title,
-        location: this.state.location,
-        date: this.state.date
+      const editedTask = {
+        id: this.props.match.params.taskId,
+        name: this.state.name,
+        description: this.state.description,
+        dueDate: this.state.dueDate,
+        complete: this.state.complete
       };
 
       this.props
-        .updateEvent(editedEvent)
-        .then(() => this.props.history.push("/events"));
+        .updateTask(editedTask)
+        .then(() => this.props.history.push("/tasks"));
     }
   };
 
   componentDidMount() {
-    EventAPIManager.getOneEvent(this.props.match.params.eventId).then(event => {
+    TaskAPIManager.getOneTask(this.props.match.params.taskId).then(task => {
       this.setState({
-        title: event.title,
-        location: event.location,
-        date: event.date
+        name: task.name,
+        description: task.description,
+        dueDate: task.dueDate,
+        complete: task.complete
       });
     });
   }
@@ -47,43 +50,43 @@ export default class EventEditForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <form className="eventForm">
+        <form className="taskForm">
           <div className="form-group">
-            <label htmlFor="Title">Event Title</label>
+            <label htmlFor="name">Task Name</label>
             <input
               type="text"
               required
               className="form-control"
               onChange={this.handleFieldChange}
-              id="title"
-              value={this.state.title}
+              id="name"
+              value={this.state.name}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="location">Location</label>
+            <label htmlFor="description">Description</label>
             <input
               type="text"
               required
               className="form-control"
               onChange={this.handleFieldChange}
-              id="location"
-              value={this.state.location}
+              id="description"
+              value={this.state.description}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="date">Date</label>
+            <label htmlFor="dueDate">Due Date</label>
             <input
               type="date"
               required
               className="form-control"
               onChange={this.handleFieldChange}
-              id="date"
-              value={this.state.date}
+              id="dueDate"
+              value={this.state.dueDate}
             />
           </div>
           <button
             type="submit"
-            onClick={this.updateExistingEvent}
+            onClick={this.updateExistingTask}
             className="btn btn-primary"
           >
             Submit

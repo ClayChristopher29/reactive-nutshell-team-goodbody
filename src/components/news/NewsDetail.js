@@ -21,6 +21,7 @@ export default class NewsDetail extends Component {
                             {news.title}
                         </h4>
                         <h6 className="news-card-title">{news.synopsis}</h6>
+                        <h6 className="news-card-title">{news.url}</h6>
 
             <button
               href="#"

@@ -8,8 +8,7 @@ export default class EventForm extends Component {
   state = {
     title: "",
     location: "",
-    date: "",
-    eventId: ""
+    date: ""
   };
 
   // Update state whenever an input field is edited
@@ -31,9 +30,7 @@ export default class EventForm extends Component {
       const event = {
         title: this.state.title,
         location: this.state.location,
-        date: this.state.date,
-        // Make sure the employeeId is saved to the database as a number since it is a foreign key.
-        eventId: parseInt(this.state.eventId)
+        date: this.state.date
       };
 
       // Create the animal and redirect user to animal list

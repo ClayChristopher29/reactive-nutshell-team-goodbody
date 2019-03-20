@@ -6,8 +6,7 @@ export default class NewsEditForm extends Component {
   state = {
     title: "",
     synopsis: "",
-    url: "",
-    newsId: ""
+    url: ""
   };
 
   handleFieldChange = evt => {
@@ -41,8 +40,7 @@ export default class NewsEditForm extends Component {
       this.setState({
         title: article.title,
         synopsis: article.synopsis,
-        url: article.url,
-        newsId: article.newsId
+        url: article.url
       });
     });
   }

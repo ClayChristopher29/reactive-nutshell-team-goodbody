@@ -22,8 +22,10 @@ class EventsList extends Component {
                     <div key={events.id} className="events-card">
                         <div className="events-card-body">
                             <h5 className="events-card-title">
-
                                 {events.title}
+                                <br />
+                                {events.date}
+
                                 <Link className="nav-link" to={`/events/${events.id}`}>Details</Link>
                             </h5>
                         </div>

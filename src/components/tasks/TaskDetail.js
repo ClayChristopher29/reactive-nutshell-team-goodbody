@@ -1,34 +1,34 @@
 import React, { Component } from "react"
-import "./Events.css"
+import "./Tasks.css"
 
 
 
-export default class EventDetail extends Component {
+export default class TaskDetail extends Component {
     render() {
         /*
             Using the route parameter, find the event that the
             user clicked on by looking at the `this.props.events`
             collection that was passed down from ApplicationViews
         */
-        const events= this.props.events.find(a => a.id === parseInt(this.props.match.params.eventId)) || {};
+        const task = this.props.tasks.find(a => a.id === parseInt(this.props.match.params.taskId)) || {};
 
         return (
-            <section className="events">
-                <div key={events.id} className="event-card">
-                    <div className="event-card-body">
-                        <h4 className="event-card-title">
-                            {events.title}
-                        </h4>
-                        <h6 className="event-card-title">{events.location}</h6>
-                        <h6 className="event-card-title">{events.date}</h6>
+            <section className="task">
+                <div key={task.id} className="task-card">
+                    <div className="task-card-body">
+                        <h6 className="task-card-name">{task.name}</h6>
+                        <h6 className="task-card-description">{task.description}</h6>
+                        <h6 className="task-card-date">{task.dueDate}</h6>
+
+
 
             <button
               href="#"
               className="btn btn-danger"
               onClick={() =>
                 this.props
-                  .deleteEvent(events.id)
-                  .then(() => this.props.history.push("/events"))
+                  .deleteTask(task.id)
+                  .then(() => this.props.history.push("/tasks"))
               }
             >
               Delete
@@ -38,7 +38,7 @@ export default class EventDetail extends Component {
               className="btn btn-success"
               onClick={() => {
                 this.props.history.push(
-                  `/events/${events.id}/edit`
+                  `/tasks/${task.id}/edit`
                 );
               }}
             >
