@@ -1,8 +1,45 @@
 {
-"users":[],
-"events":[],
-"messages":[],
-"tasks":[],
-"articles":[],
-"friends":[]
-}
+    "users": [
+      {
+        "email": "m@m",
+        "userName": "matt",
+        "id": 1
+      }
+    ],
+    "events": [
+      {
+        "title": "make sure",
+        "location": "make sure",
+        "date": "2019-03-22",
+        "userId": "1",
+        "id": 2
+      }
+    ],
+    "messages": [
+      {
+        "message": "everything works, it's just not cool",
+        "id": 1,
+        "userId": "1"
+      }
+    ],
+    "tasks": [
+      {
+        "name": "Build a 3rd boat",
+        "description": "buy more wood",
+        "dueDate": "2019-03-28",
+        "complete": true,
+        "userId": "1",
+        "id": 4
+      }
+    ],
+    "news": [
+      {
+        "title": "does it work?",
+        "synopsis": "does it work",
+        "url": "does it work?",
+        "userId": "1",
+        "id": 6
+      }
+    ],
+    "friends": []
+  }
