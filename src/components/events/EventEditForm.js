@@ -6,7 +6,8 @@ export default class EventEditForm extends Component {
   state = {
     title: "",
     location: "",
-    date: ""
+    date: "",
+    userId: parseInt(sessionStorage.getItem("credentials"))
   };
 
   handleFieldChange = evt => {
@@ -25,7 +26,8 @@ export default class EventEditForm extends Component {
         id: this.props.match.params.eventId,
         title: this.state.title,
         location: this.state.location,
-        date: this.state.date
+        date: this.state.date,
+        userId: this.state.userId
       };
 
       this.props

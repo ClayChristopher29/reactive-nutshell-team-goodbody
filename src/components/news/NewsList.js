@@ -18,8 +18,9 @@ class NewsList extends Component {
                 </div>
                 <section className="news">
                     {
-                        this.props.news.map(news =>
-                            <div key={news.id} className="news-card">
+                        this.props.news.map(news => {
+                            if (news.userId === sessionStorage.getItem('credentials')) {
+                            return <div key={news.id} className="news-card">
                                 <div className="news-card-body">
                                     <h5 className="news-card-title">
 
@@ -28,7 +29,9 @@ class NewsList extends Component {
                                     </h5>
                                 </div>
                             </div>
-                        )
+                            }
+                        }
+                        )}
                     }
                 </section>
             </React.Fragment>

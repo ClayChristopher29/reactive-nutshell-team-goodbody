@@ -8,7 +8,8 @@ export default class EventForm extends Component {
   state = {
     title: "",
     location: "",
-    date: ""
+    date: "",
+    userId: parseInt(sessionStorage.getItem("credentials"))
   };
 
   // Update state whenever an input field is edited
@@ -30,7 +31,8 @@ export default class EventForm extends Component {
       const event = {
         title: this.state.title,
         location: this.state.location,
-        date: this.state.date
+        date: this.state.date,
+        userId: this.state.userId
       };
 
       // Create the event and redirect user to event list
