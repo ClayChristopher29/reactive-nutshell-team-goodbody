@@ -8,7 +8,8 @@ export default class NewsForm extends Component {
   state = {
     title: "",
     synopsis: "",
-    url: ""
+    url: "",
+    userId: ""
   };
 
   // Update state whenever an input field is edited
@@ -19,7 +20,7 @@ export default class NewsForm extends Component {
   };
 
   /*
-        Local method for validation, creating animal object, and
+        Local method for validation, creating news object, and
         invoking the function reference passed from parent component
      */
   constructNewsArticle = evt => {
@@ -35,7 +36,7 @@ export default class NewsForm extends Component {
         // Make sure the employeeId is saved to the database as a number since it is a foreign key.
       };
 
-      // Create the animal and redirect user to animal list
+      // Create the article and redirect user to news list
 
       this.props.addNewsArticle(news)
         .then(() => this.props.history.push("/news"));

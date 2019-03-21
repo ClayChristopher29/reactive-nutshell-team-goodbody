@@ -21,7 +21,7 @@ export default class TaskForm extends Component {
   };
 
   /*
-        Local method for validation, creating animal object, and
+        Local method for validation, creating task object, and
         invoking the function reference passed from parent component
      */
   constructTask = evt => {
@@ -38,7 +38,7 @@ export default class TaskForm extends Component {
         userId: sessionStorage.getItem("credentials")
       };
 
-      // Create the animal and redirect user to animal list
+      // Create the task and redirect user to task list
 
       this.props.addTask(task)
         .then(() => this.props.history.push("/tasks"));

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import "./News.css"
 import { Link } from "react-router-dom";
 
@@ -16,21 +16,24 @@ class NewsList extends Component {
                         Add News Article
                     </button>
                 </div>
-            <section className="news">
-            {
-                this.props.news.map(news =>
-                    <div key={news.id} className="news-card">
-                        <div className="news-card-body">
-                            <h5 className="news-card-title">
+                <section className="news">
+                    {
+                        this.props.news.map(news => {
+                            if (news.userId === sessionStorage.getItem('credentials')) {
+                            return <div key={news.id} className="news-card">
+                                <div className="news-card-body">
+                                    <h5 className="news-card-title">
 
-                                {news.title}
-                                <Link className="nav-link" to={`/news/${news.id}`}>Details</Link>
-                            </h5>
-                        </div>
-                    </div>
-                )
-            }
-            </section>
+                                        {news.title}
+                                        <Link className="nav-link" to={`/news/${news.id}`}>Details</Link>
+                                    </h5>
+                                </div>
+                            </div>
+                            }
+                        }
+                        )}
+                    }
+                </section>
             </React.Fragment>
         );
     }
