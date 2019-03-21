@@ -31,6 +31,7 @@ export default class NewsForm extends Component {
         title: this.state.title,
         synopsis: this.state.synopsis,
         url: this.state.url,
+        userId: sessionStorage.getItem("credentials")
         // Make sure the employeeId is saved to the database as a number since it is a foreign key.
       };
 

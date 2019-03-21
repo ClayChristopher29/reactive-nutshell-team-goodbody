@@ -30,7 +30,8 @@ export default class EventForm extends Component {
       const event = {
         title: this.state.title,
         location: this.state.location,
-        date: this.state.date
+        date: this.state.date,
+        userId: sessionStorage.getItem("credentials")
       };
 
       // Create the animal and redirect user to animal list

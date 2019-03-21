@@ -27,6 +27,7 @@ export default class ChatForm extends Component {
     } else {
       const chatMessage = {
         message: this.state.message,
+        userId: sessionStorage.getItem("credentials")
         // Make sure the employeeId is saved to the database as a number since it is a foreign key.
 
       };
