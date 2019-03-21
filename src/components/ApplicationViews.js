@@ -27,7 +27,7 @@ import ChatManager from '../modules/chatManager'
 import ChatList from "./chat/chatList"
 import ChatForm from "./chat/chatForm"
 import Chat from "./chat/chat"
-import chatManager from "../modules/chatManager";
+// import chatManager from "../modules/chatManager";
 
 export default class ApplicationViews extends Component {
 
@@ -42,30 +42,30 @@ export default class ApplicationViews extends Component {
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
-  addMessage = messageObject =>
-    ChatManager.addMessage(messageObject).then(() =>
-    chatManager.getAllMessages()).then(messages =>
-      this.setState({
-        messages: messages
-      })
-    );
+  // addMessage = messageObject =>
+  //   ChatManager.addMessage(messageObject).then(() =>
+  //   chatManager.getAllMessages()).then(messages =>
+  //     this.setState({
+  //       messages: messages
+  //     })
+  //   );
 
-  deleteMessage = id => {
-      return ChatManager.deleteMessage(id).then(messages =>
-        this.setState({
-          messages: messages
-        })
-      );
-    };
-  updateMessage = (editedMessage) => {
-      return ChatManager.put(editedMessage)
-        .then(() => ChatManager.getAllMessages())
-        .then(messages => {
-          this.setState({
-            messages: messages
-          })
-        });
-    };
+  // deleteMessage = id => {
+  //     return ChatManager.deleteMessage(id).then(messages =>
+  //       this.setState({
+  //         messages: messages
+  //       })
+  //     );
+  //   };
+  // updateMessage = (editedMessage) => {
+  //     return ChatManager.put(editedMessage)
+  //       .then(() => ChatManager.getAllMessages())
+  //       .then(messages => {
+  //         this.setState({
+  //           messages: messages
+  //         })
+  //       });
+  //   };
 
   registerUser = userObject =>
     RegisterManager.postUser(userObject);
@@ -152,8 +152,8 @@ export default class ApplicationViews extends Component {
     const newState = {};
     NewsAPIManager.getAllNews()
       .then(news => (newState.news = news))
-      .then(chatManager.getAllMessages)
-      .then(messages =>(newState.messages = messages))
+      // .then(chatManager.getAllMessages)
+      // .then(messages =>(newState.messages = messages))
       .then(EventAPIManager.getAllEvents)
       .then(events => (newState.events = events))
       .then(TaskAPIManager.getAllTasks)

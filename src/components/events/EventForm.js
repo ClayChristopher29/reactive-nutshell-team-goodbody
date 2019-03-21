@@ -9,7 +9,7 @@ export default class EventForm extends Component {
     title: "",
     location: "",
     date: "",
-    userId: parseInt(sessionStorage.getItem("credentials"))
+    userId: sessionStorage.getItem("credentials")
   };
 
   // Update state whenever an input field is edited
@@ -32,7 +32,7 @@ export default class EventForm extends Component {
         title: this.state.title,
         location: this.state.location,
         date: this.state.date,
-        userId: sessionStorage.getItem("credentials")
+        userId: this.state.userId
       };
 
       // Create the event and redirect user to event list

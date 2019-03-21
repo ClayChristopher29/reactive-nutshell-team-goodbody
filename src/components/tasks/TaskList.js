@@ -26,6 +26,7 @@ class TaskList extends Component {
                 </div>
                 <section className="tasks">
                     {this.props.tasks.map(task => {
+                        if (task.userId === sessionStorage.getItem('credentials')) {
                         return (<div key={task.id} className="tasks-card">
 
                             <div className="tasks-card-body">
@@ -44,7 +45,7 @@ class TaskList extends Component {
 
                             </div>
                         </div>
-                        )
+                        )}
                     })
                     }
                 </section>

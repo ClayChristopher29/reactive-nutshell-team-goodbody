@@ -10,6 +10,7 @@ export default class TaskForm extends Component {
     description: "",
     dueDate: "",
     complete: false,
+    userId: sessionStorage.getItem("credentials")
 
   };
 
@@ -35,7 +36,7 @@ export default class TaskForm extends Component {
         dueDate: this.state.dueDate,
         // Make sure the employeeId is saved to the database as a number since it is a foreign key.
         complete: this.state.complete,
-        userId: sessionStorage.getItem("credentials")
+        userId: this.state.userId
       };
 
       // Create the task and redirect user to task list
