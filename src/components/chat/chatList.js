@@ -55,6 +55,7 @@ export default class chatList extends Component {
                                 console.log("Complete and Total success")
                                 return <div key={singleMessage.id}>
                                     <div>
+
                                         <input
                                             type="text"
                                             required
@@ -80,7 +81,7 @@ export default class chatList extends Component {
 
                             else {
                                 return <div key={singleMessage.id}>
-                                    <div>{singleMessage.message}</div>
+                                    <div>{singleMessage.user.userName}{": "}{singleMessage.message}</div>
 
 
                                     <button type="button"

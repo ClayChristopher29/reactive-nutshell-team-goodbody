@@ -1,7 +1,7 @@
 export default {
 
     getAllMessages: () => {
-        return fetch ("http://localhost:5002/messages")
+        return fetch ("http://localhost:5002/messages/?_expand=user")
         .then(chats => chats.json())
     },
     getOneMessage: id =>
