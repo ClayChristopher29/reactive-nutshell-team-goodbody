@@ -17,7 +17,8 @@ export default class chatList extends Component {
         } else {
             const editedMessage = {
                 message: this.state.message,
-                id: this.state.messageToEdit.id
+                id: this.state.messageToEdit.id,
+                userId: sessionStorage.getItem("credentials")
                 // Make sure the employeeId is saved to the database as a number since it is a foreign key.
 
             };

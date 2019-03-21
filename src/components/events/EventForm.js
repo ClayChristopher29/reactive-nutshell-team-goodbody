@@ -32,7 +32,7 @@ export default class EventForm extends Component {
         title: this.state.title,
         location: this.state.location,
         date: this.state.date,
-        userId: this.state.userId
+        userId: sessionStorage.getItem("credentials")
       };
 
       // Create the event and redirect user to event list

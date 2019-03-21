@@ -9,7 +9,8 @@ export default class TaskForm extends Component {
     name: "",
     description: "",
     dueDate: "",
-    complete: false
+    complete: false,
+
   };
 
   // Update state whenever an input field is edited
@@ -32,8 +33,9 @@ export default class TaskForm extends Component {
         name: this.state.name,
         description: this.state.description,
         dueDate: this.state.dueDate,
-        // Make sure the userId is saved to the database as a number since it is a foreign key.
-        complete: this.state.complete
+        // Make sure the employeeId is saved to the database as a number since it is a foreign key.
+        complete: this.state.complete,
+        userId: sessionStorage.getItem("credentials")
       };
 
       // Create the task and redirect user to task list

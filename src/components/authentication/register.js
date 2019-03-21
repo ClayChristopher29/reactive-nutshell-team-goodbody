@@ -4,15 +4,32 @@ export default class Register extends Component {
 // set initial state for Registration
 state = {
     email: "",
-    userName: ""
-    // errorMessage: ""
+    userName: "",
+    rememberMe: false,
+    errorMessage: ""
 };
  // Update state whenever an input field is edited
-handleFieldChange = (evt) => {
-    const stateToChange = {}
-    stateToChange[evt.target.id] = evt.target.value
-    this.setState(stateToChange)
-}
+// handleFieldChange = (evt) => {
+//     const stateToChange = {};
+//     if (evt.target.type === "checkbox") {
+//     stateToChange[evt.target.id] = evt.target.checked;
+//     } else {
+//     stateToChange[evt.target.id] = evt.target.value;
+// }
+//     this.setState(stateToChange);
+// }
+
+handleFieldChange = evt => {
+    const stateToChange = {};
+    // If the input was a checkbox, we want to store a boolean in state so the syntax is a lil bit different
+    if (evt.target.type === "checkbox") {
+      stateToChange[evt.target.id] = evt.target.checked;
+    } else {
+      stateToChange[evt.target.id] = evt.target.value;
+    }
+    this.setState(stateToChange);
+  };
+
 
 // Simplistic handler for login submit
 handleLogin = (e) => {
