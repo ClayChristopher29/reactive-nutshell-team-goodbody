@@ -8,7 +8,8 @@ export default class EventForm extends Component {
   state = {
     title: "",
     location: "",
-    date: ""
+    date: "",
+    userId: parseInt(sessionStorage.getItem("credentials"))
   };
 
   // Update state whenever an input field is edited
@@ -19,7 +20,7 @@ export default class EventForm extends Component {
   };
 
   /*
-        Local method for validation, creating animal object, and
+        Local method for validation, creating event object, and
         invoking the function reference passed from parent component
      */
   constructEvent = evt => {
@@ -30,10 +31,11 @@ export default class EventForm extends Component {
       const event = {
         title: this.state.title,
         location: this.state.location,
-        date: this.state.date
+        date: this.state.date,
+        userId: this.state.userId
       };
 
-      // Create the animal and redirect user to animal list
+      // Create the event and redirect user to event list
 
       this.props.addEvent(event)
         .then(() => this.props.history.push("/events"));

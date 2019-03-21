@@ -26,6 +26,7 @@ export default class NewsEditForm extends Component {
         title: this.state.title,
         synopsis: this.state.synopsis,
         url: this.state.url,
+        userId: sessionStorage.getItem('credentials')
         // newsId: parseInt(this.state.newsId)
       };
 

@@ -4,8 +4,8 @@ export default class Register extends Component {
 // set initial state for Registration
 state = {
     email: "",
-    userName: "",
-    errorMessage: ""
+    userName: ""
+    // errorMessage: ""
 };
  // Update state whenever an input field is edited
 handleFieldChange = (evt) => {
@@ -38,13 +38,14 @@ registerUser = evt => {
 const userToPost = {
     email: this.state.email,
     userName: this.state.userName
-};
-    RegisterManager.getByEmail(this.state.email).then(user => {
-        if (user.length > 0) {
-            const errorMessage =
-              "Sorry, that email already exists.";
-            this.setState({ errorMessage: errorMessage });
-          } else {
+}
+
+    // RegisterManager.getByEmail(this.state.email).then(user => {
+    //     if (user.length > 0) {
+    //         const errorMessage =
+    //           "Sorry, that email already exists.";
+    //         this.setState({ errorMessage: errorMessage });
+    //       } else {
             // If the email isn't in the db, go ahead and register
             this.props.registerUser(userToPost).then(user => {
               console.log(user);
@@ -53,8 +54,8 @@ const userToPost = {
 
             });
           }
-        });
-      };
+    //     });
+    //   };
 
 
 
