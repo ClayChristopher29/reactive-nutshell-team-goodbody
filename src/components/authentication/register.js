@@ -5,14 +5,31 @@ export default class Register extends Component {
 state = {
     email: "",
     userName: "",
+    rememberMe: false,
     errorMessage: ""
 };
  // Update state whenever an input field is edited
-handleFieldChange = (evt) => {
-    const stateToChange = {}
-    stateToChange[evt.target.id] = evt.target.value
-    this.setState(stateToChange)
-}
+// handleFieldChange = (evt) => {
+//     const stateToChange = {};
+//     if (evt.target.type === "checkbox") {
+//     stateToChange[evt.target.id] = evt.target.checked;
+//     } else {
+//     stateToChange[evt.target.id] = evt.target.value;
+// }
+//     this.setState(stateToChange);
+// }
+
+handleFieldChange = evt => {
+    const stateToChange = {};
+    // If the input was a checkbox, we want to store a boolean in state so the syntax is a lil bit different
+    if (evt.target.type === "checkbox") {
+      stateToChange[evt.target.id] = evt.target.checked;
+    } else {
+      stateToChange[evt.target.id] = evt.target.value;
+    }
+    this.setState(stateToChange);
+  };
+
 
 // Simplistic handler for login submit
 handleLogin = (e) => {
@@ -38,13 +55,14 @@ registerUser = evt => {
 const userToPost = {
     email: this.state.email,
     userName: this.state.userName
-};
-    RegisterManager.getByEmail(this.state.email).then(user => {
-        if (user.length > 0) {
-            const errorMessage =
-              "Sorry, that email already exists.";
-            this.setState({ errorMessage: errorMessage });
-          } else {
+}
+
+    // RegisterManager.getByEmail(this.state.email).then(user => {
+    //     if (user.length > 0) {
+    //         const errorMessage =
+    //           "Sorry, that email already exists.";
+    //         this.setState({ errorMessage: errorMessage });
+    //       } else {
             // If the email isn't in the db, go ahead and register
             this.props.registerUser(userToPost).then(user => {
               console.log(user);
@@ -53,8 +71,8 @@ const userToPost = {
 
             });
           }
-        });
-      };
+    //     });
+    //   };
 
 
 

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import "./Events.css"
 import { Link } from "react-router-dom";
 
@@ -16,23 +16,23 @@ class EventsList extends Component {
                         Add Event
                     </button>
                 </div>
-            <section className="events">
-            {
-                this.props.events.map(events =>
-                    <div key={events.id} className="events-card">
-                        <div className="events-card-body">
-                            <h5 className="events-card-title">
-                                {events.title}
-                                <br />
-                                {events.date}
+                <section className="events">
+                    {
+                        this.props.events.map(events =>
+                            <div key={events.id} className="events-card">
+                                <div className="events-card-body">
+                                    <h5 className="events-card-title">
+                                        {events.title}
+                                        <br />
+                                        {events.date}
 
-                                <Link className="nav-link" to={`/events/${events.id}`}>Details</Link>
-                            </h5>
-                        </div>
-                    </div>
-                )
-            }
-            </section>
+                                        <Link className="nav-link" to={`/events/${events.id}`}>Details</Link>
+                                    </h5>
+                                </div>
+                            </div>
+                        )
+                    }
+                </section>
             </React.Fragment>
         );
     }
