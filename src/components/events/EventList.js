@@ -18,9 +18,9 @@ class EventsList extends Component {
                 </div>
                 <section className="events">
                     {
-                        this.props.events.map(events => {
-                            if (events.userId === sessionStorage.getItem("credentials")) {
-                            return ( <div key={events.id} className="events-card">
+
+                        this.props.events.sort((a, b) => a.date > b.date ? 1 : -1).map(events=>
+                            <div key={events.id} className="events-card">
                                 <div className="events-card-body">
                                     <h5 className="events-card-title">
                                         {events.title}

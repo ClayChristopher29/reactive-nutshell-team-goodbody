@@ -8,8 +8,7 @@ export default class NewsForm extends Component {
   state = {
     title: "",
     synopsis: "",
-    url: "",
-    userId: sessionStorage.getItem("credentials")
+    url: ""
   };
 
   // Update state whenever an input field is edited
@@ -32,7 +31,7 @@ export default class NewsForm extends Component {
         title: this.state.title,
         synopsis: this.state.synopsis,
         url: this.state.url,
-        userId: this.state.userId
+        userId: sessionStorage.getItem("credentials")
         // Make sure the employeeId is saved to the database as a number since it is a foreign key.
       };
 

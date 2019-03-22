@@ -20,6 +20,8 @@ import TaskList from './tasks/TaskList'
 import TaskAPIManager from '../modules/TasksManager'
 
 import Register from './authentication/register'
+import UserManager from '../modules/UserManager'
+import Login from './authentication/Login'
 
 import RegisterManager from '../modules/registerManager'
 import ChatManager from '../modules/chatManager'
@@ -152,6 +154,8 @@ export default class ApplicationViews extends Component {
     const newState = {};
     NewsAPIManager.getAllNews()
       .then(news => (newState.news = news))
+      .then(UserManager.getAllUsers)
+      .then(users => (newState.users = users))
       // .then(chatManager.getAllMessages)
       // .then(messages =>(newState.messages = messages))
       .then(EventAPIManager.getAllEvents)
@@ -165,7 +169,7 @@ export default class ApplicationViews extends Component {
     return (
 
       <div className="container-div">
-
+{/*
         <Route
 
           exact path="/"
@@ -178,7 +182,7 @@ export default class ApplicationViews extends Component {
               // Remove null and return the component which will show news articles
             )
           }}
-        />
+        /> */}
 <Route
           exact
           path="/news"
@@ -191,6 +195,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+
         <Route path="/news/new" render={props => {
            if (this.isAuthenticated()) {
           return <NewsForm {...props}
@@ -199,6 +204,21 @@ export default class ApplicationViews extends Component {
             return <Redirect to="/" />
           }
         }} />
+
+<Route
+          exact
+          path="/"
+          render={props => {
+            return <Login  {...props} />
+          }}
+        />
+        <Route
+          exact
+          path="/register"
+          render={props => {
+            return <Register {...props} getUserEvents={this.getUserEvents} />;
+          }}
+        />
 
         <Route exact path="/news/:newsId(\d+)" render={(props) => {
           if (this.isAuthenticated()) {
