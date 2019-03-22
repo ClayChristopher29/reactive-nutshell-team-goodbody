@@ -8,8 +8,7 @@ export default class EventForm extends Component {
   state = {
     title: "",
     location: "",
-    date: "",
-    userId: parseInt(sessionStorage.getItem("credentials"))
+    date: ""
   };
 
   // Update state whenever an input field is edited

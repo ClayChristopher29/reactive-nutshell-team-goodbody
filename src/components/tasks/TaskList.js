@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "../appStyles/applicationStyles.css"
 import { Link } from "react-router-dom";
 
-class TaskList extends Component {
+export default class TaskList extends Component {
     handleCheckbox = evt => {
         evt.preventDefault();
         const completeObject = {
@@ -26,42 +26,37 @@ class TaskList extends Component {
                 </div> */}
                 <section className="tasks">
                     {this.props.tasks.map(task => {
-                        return (<div key={task.id} className="tasks-card">
+                        if (task.userId === sessionStorage.getItem('credentials')) {
+                            return (<div key={task.id} className="tasks-card">
 
-                            <div className="tasks-card-body">
+                                <div className="tasks-card-body">
 
-                                <h6 className="task-card-name">{task.name}</h6>
-                                <h6 className="task-card-date">{task.dueDate}</h6>
-                                <label>Complete?
+                                    <h6 className="task-card-name">{task.name}</h6>
+                                    <h6 className="task-card-date">{task.dueDate}</h6>
+                                    <label>Complete?
                                 <input
-                                        type="checkbox"
-                                        onChange={() =>
-                                            this.props.completeTask({ complete: true }, task.id)
-                                        }
-                                    />
-                                </label>
-                                <Link className="nav-link" to={`/tasks/${task.id}`}>Details</Link>
-
-                            </div>
-                        </div>
-
-                        )
-                    })
-                    }
+                                            type="checkbox"
+                                            onChange={() =>
+                                                this.props.completeTask({ complete: true }, task.id)
+                                            }
+                                        />
+                                    </label>
+                                    <Link className="nav-link" to={`/tasks/${task.id}`}>Details</Link>
+                                </div>
+                            </div>  )}})}
                 </section>
                 <div className="tasksButton">
-                    <button type="button"
-                        className="btn btn-success"
-                        onClick={() => {
-                            this.props.history.push("/tasks/new")
-                        }
-                        }>
-                        Add Task
+                        <button type="button"
+                            className="btn btn-success"
+                            onClick={() => {
+                                this.props.history.push("/tasks/new")
+                            }
+                            }>
+                            Add Task
                     </button>
-                </div>
+                    </div>
             </React.Fragment>
-        );
-    }
-}
+                );
+            }
+        }
 
-export default TaskList;

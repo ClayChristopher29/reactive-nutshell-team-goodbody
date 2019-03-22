@@ -7,7 +7,8 @@ export default class TaskEditForm extends Component {
     name: "",
     description: "",
     dueDate: "",
-    complete: false
+    complete: false,
+    userId: sessionStorage.getItem("credentials")
   };
 
   handleFieldChange = evt => {
@@ -27,7 +28,8 @@ export default class TaskEditForm extends Component {
         name: this.state.name,
         description: this.state.description,
         dueDate: this.state.dueDate,
-        complete: this.state.complete
+        complete: this.state.complete,
+        userId: this.state.userId
       };
 
       this.props

@@ -8,7 +8,7 @@ export default class EventEditForm extends Component {
     title: "",
     location: "",
     date: "",
-    userId: parseInt(sessionStorage.getItem("credentials"))
+    userId: sessionStorage.getItem("credentials")
   };
 
   handleFieldChange = evt => {

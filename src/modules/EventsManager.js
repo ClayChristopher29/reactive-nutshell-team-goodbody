@@ -15,6 +15,10 @@ return fetch(`http://localhost:5002/events/${editedEvent.id}`, {
   body: JSON.stringify(editedEvent)
 }).then(data => data.json());
 },
+getUserEvents: (userId) => {
+  return fetch(`http://localhost:5002/events/?userId=${userId}`)
+  .then(user => user.json())
+},
 
 deleteEvent: (id) => {
   return fetch (`http://localhost:5002/events/${id}`, {

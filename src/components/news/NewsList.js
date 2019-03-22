@@ -18,7 +18,7 @@ class NewsList extends Component {
                 </div>
                 <section className="news">
                     {
-                        this.props.news.map(news => {
+                        this.props.news.reverse().map(news => {
                             if (news.userId === sessionStorage.getItem('credentials')) {
                             return <div key={news.id} className="news-card">
                                 <div className="news-card-body">
