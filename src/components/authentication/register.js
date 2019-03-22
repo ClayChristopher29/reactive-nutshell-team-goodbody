@@ -8,16 +8,7 @@ state = {
     rememberMe: false,
     errorMessage: ""
 };
- // Update state whenever an input field is edited
-// handleFieldChange = (evt) => {
-//     const stateToChange = {};
-//     if (evt.target.type === "checkbox") {
-//     stateToChange[evt.target.id] = evt.target.checked;
-//     } else {
-//     stateToChange[evt.target.id] = evt.target.value;
-// }
-//     this.setState(stateToChange);
-// }
+
 
 handleFieldChange = evt => {
     const stateToChange = {};

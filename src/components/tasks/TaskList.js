@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./Tasks.css"
+import "../appStyles/applicationStyles.css"
 import { Link } from "react-router-dom";
 
 class TaskList extends Component {
