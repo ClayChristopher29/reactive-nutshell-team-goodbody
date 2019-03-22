@@ -1,0 +1,113 @@
+.tasks-card{
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    margin: 15px;
+    flex-direction: column
+}
+
+.task-card{
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    margin: 15px;
+    flex-direction: column
+}
+
+.taskForm{
+    border-radius: 25px;
+    border: 2px solid #404040;
+    padding: 20px;
+    margin: 15px;
+    flex-direction: column
+}
+
+.tasks {
+    display: flex;
+    justify-content: center;
+
+}
+
+.tasksButton {
+    display: flex;
+    justify-content: center;
+}
+
+.news-card{
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    /* width: 200px;
+    height: 150px; */
+    margin: 15px
+}
+
+.NewsForm{
+    border-radius: 25px;
+    border: 2px solid #404040;
+    padding: 20px;
+    margin: 15px;
+    flex-direction: column
+}
+
+.news {
+    display: flex;
+    justify-content: center;
+
+}
+
+.events-card{
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    /* width: 200px;
+    height: 150px; */
+    margin: 15px
+}
+
+.event-card{
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    /* width: 200px;
+    height: 150px; */
+    margin: 15px
+}
+
+.eventsForm{
+    border-radius: 25px;
+    border: 2px solid #404040;
+    padding: 20px;
+    margin: 15px;
+    flex-direction: column
+}
+
+.events {
+    display: flex;
+    justify-content: center;
+
+}
+
+.messageBoardContainer {
+    border-radius: 25px;
+    border: 2px solid #404040;
+    padding: 20px;
+    margin: 15px;
+}
+
+.MessageForm {
+    border-radius: 25px;
+    border: 2px solid #404040;
+    padding: 20px;
+    margin: 15px;
+}

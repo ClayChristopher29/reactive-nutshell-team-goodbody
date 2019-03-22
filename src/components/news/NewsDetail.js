@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import "./News.css"
+import "../appStyles/applicationStyles.css"
 
 
 

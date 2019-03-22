@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import "./Events.css";
+import "../appStyles/applicationStyles.css"
 import EventsAPIManager from '../../modules/EventsManager'
 
 export default class EventForm extends Component {

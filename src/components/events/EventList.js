@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./Events.css"
+import "../appStyles/applicationStyles.css"
 import { Link } from "react-router-dom";
 
 class EventsList extends Component {

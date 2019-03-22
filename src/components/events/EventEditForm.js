@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import EventAPIManager from "../../modules/EventsManager";
+import "../appStyles/applicationStyles.css"
 
 export default class EventEditForm extends Component {
   // Set initial state
