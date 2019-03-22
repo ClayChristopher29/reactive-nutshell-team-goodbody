@@ -9,7 +9,7 @@ export default class TaskForm extends Component {
     name: "",
     description: "",
     dueDate: "",
-    complete: false,
+    complete: false
 
   };
 

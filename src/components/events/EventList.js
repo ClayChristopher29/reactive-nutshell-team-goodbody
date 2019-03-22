@@ -18,7 +18,8 @@ class EventsList extends Component {
                 </div>
                 <section className="events">
                     {
-                        this.props.events.map(events =>
+
+                        this.props.events.sort((a, b) => a.date > b.date ? 1 : -1).map(events=>
                             <div key={events.id} className="events-card">
                                 <div className="events-card-body">
                                     <h5 className="events-card-title">
@@ -30,8 +31,9 @@ class EventsList extends Component {
                                     </h5>
                                 </div>
                             </div>
-                        )
-                    }
+                            )}
+                        })
+                        }
                 </section>
             </React.Fragment>
         );

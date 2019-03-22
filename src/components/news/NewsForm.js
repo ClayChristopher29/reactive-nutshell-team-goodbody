@@ -3,13 +3,15 @@ import React, { Component } from "react";
 import "./News.css";
 import NewsAPIManager from '../../modules/NewsManager'
 
+
+
 export default class NewsForm extends Component {
   // Set initial state
   state = {
     title: "",
     synopsis: "",
     url: "",
-    userId: ""
+    Timestamp: ""
   };
 
   // Update state whenever an input field is edited
@@ -25,6 +27,7 @@ export default class NewsForm extends Component {
      */
   constructNewsArticle = evt => {
     evt.preventDefault();
+
     if (this.state.title === "") {
       window.alert("Please enter a news article");
     } else {

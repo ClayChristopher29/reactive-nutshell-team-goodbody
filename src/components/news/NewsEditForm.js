@@ -6,7 +6,8 @@ export default class NewsEditForm extends Component {
   state = {
     title: "",
     synopsis: "",
-    url: ""
+    url: "",
+    userId: sessionStorage.getItem("credentials")
   };
 
   handleFieldChange = evt => {
@@ -26,7 +27,7 @@ export default class NewsEditForm extends Component {
         title: this.state.title,
         synopsis: this.state.synopsis,
         url: this.state.url,
-        userId: sessionStorage.getItem('credentials')
+        userId: this.state.userId
         // newsId: parseInt(this.state.newsId)
       };
 
