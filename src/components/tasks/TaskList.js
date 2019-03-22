@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import "../appStyles/applicationStyles.css"
+import Nut from "../appStyles/walnut.png"
 import { Link } from "react-router-dom";
+
 
 export default class TaskList extends Component {
     handleCheckbox = evt => {
@@ -55,6 +57,7 @@ export default class TaskList extends Component {
                             Add Task
                     </button>
                     </div>
+                    {/* <img src={Nut} className="icon--nut" alt="image of nut" /> */}
             </React.Fragment>
                 );
             }

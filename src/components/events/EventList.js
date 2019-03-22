@@ -32,12 +32,10 @@ class EventsList extends Component {
                                 </div>
                             </div>
                             )}
-                        })
-                        }
+
                 </section>
             </React.Fragment>
-        );
-    }
-}
+        )
+    }}
 
 export default EventsList;

@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 // import './login.css'
 import UserManager from "../../modules/UserManager";
-
+import "../appStyles/applicationStyles.css"
 
 export default class Login extends Component {
 
@@ -63,36 +63,36 @@ export default class Login extends Component {
 render() {
     return (
         <div>
-            <form onSubmit={this.handleLogin}>
+            <form className="loginForm" onSubmit={this.handleLogin}>
                 <h1>Welcome To Nutshell</h1>
                 <h2 className="h3 mb-3 font-weight-normal">Please sign in</h2>
                 <br></br>
 
-                <label htmlFor="userEmail">
-                    Email address
+                <label className="emailLabel" htmlFor="userEmail">
+                    Email address:
                 </label>
                 <input onChange={this.handleFieldChange} type="email"
                     id="userEmail"
                     placeholder="Email address"
                     required="" autoFocus="" />
                 <br></br>
-                <label htmlFor="inputPassword">
-                    Password
+                <label className="passwordLabel" htmlFor="inputPassword">
+                    Password:
                 </label>
                 <input onChange={this.handleFieldChange} type="password"
                     id="password"
                     placeholder="Password"
                     required="" />
                 <br></br>
-                <button type="submit">
+                <button className="loginBtn" type="submit">
                     Sign in
                         </button>
             </form>
-            <section>
+            <section className="loginForm">
                 <br></br>
                 <h2>-or-</h2>
                 <br></br>
-                <button type="register" onClick={() => this.props.history.push("/register")}
+                <button className="loginBtn" type="register" onClick={() => this.props.history.push("/register")}
                     id="newUserReg">
                     Register New User
                 </button>

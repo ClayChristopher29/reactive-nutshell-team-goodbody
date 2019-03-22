@@ -111,3 +111,26 @@
     padding: 20px;
     margin: 15px;
 }
+
+.loginForm {
+    border-radius: 25px;
+    border: 2px solid #404040;
+    padding: 20px;
+    margin: 15px;
+    text-align: center
+}
+
+.loginBtn{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    display: inline-block
+}
+
+.icon--nut{
+    opacity: 0.5;
+    display: flex;
+    justify-items: center;
+    text-align: center
+
+}
