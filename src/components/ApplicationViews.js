@@ -29,7 +29,7 @@ import ChatManager from '../modules/chatManager'
 import ChatList from "./chat/chatList"
 import ChatForm from "./chat/chatForm"
 import Chat from "./chat/chat"
-// import chatManager from "../modules/chatManager";
+import chatManager from "../modules/chatManager";
 
 export default class ApplicationViews extends Component {
 
@@ -44,30 +44,30 @@ export default class ApplicationViews extends Component {
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
-  // addMessage = messageObject =>
-  //   ChatManager.addMessage(messageObject).then(() =>
-  //   chatManager.getAllMessages()).then(messages =>
-  //     this.setState({
-  //       messages: messages
-  //     })
-  //   );
+  addMessage = messageObject =>
+    ChatManager.addMessage(messageObject).then(() =>
+    chatManager.getAllMessages()).then(messages =>
+      this.setState({
+        messages: messages
+      })
+    );
 
-  // deleteMessage = id => {
-  //     return ChatManager.deleteMessage(id).then(messages =>
-  //       this.setState({
-  //         messages: messages
-  //       })
-  //     );
-  //   };
-  // updateMessage = (editedMessage) => {
-  //     return ChatManager.put(editedMessage)
-  //       .then(() => ChatManager.getAllMessages())
-  //       .then(messages => {
-  //         this.setState({
-  //           messages: messages
-  //         })
-  //       });
-  //   };
+  deleteMessage = id => {
+      return ChatManager.deleteMessage(id).then(messages =>
+        this.setState({
+          messages: messages
+        })
+      );
+    };
+  updateMessage = (editedMessage) => {
+      return ChatManager.put(editedMessage)
+        .then(() => ChatManager.getAllMessages())
+        .then(messages => {
+          this.setState({
+            messages: messages
+          })
+        });
+    };
 
   registerUser = userObject =>
     RegisterManager.postUser(userObject);
@@ -148,6 +148,18 @@ export default class ApplicationViews extends Component {
         })
       });
   };
+  getUserEvents = id => {
+    return EventAPIManager.getUserEvents(id)
+    .then(users => {
+      // console.log("Here's is a note", ue)
+      //   const eventsByDate = ue.sort(function(a, b) {
+      //       return a.date-b.date
+      //   })
+      //   console.log(eventsByDate)
+      this.setState({
+        events: users
+      })
+  })}
 
 
   componentDidMount() {

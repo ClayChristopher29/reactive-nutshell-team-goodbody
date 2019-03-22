@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import "./News.css"
+import Timestamp from 'react-timestamp';
+
 
 export default class NewsDetail extends Component {
   render() {
@@ -19,6 +21,8 @@ export default class NewsDetail extends Component {
             </h4>
             <h6 className="news-card-title">{news.synopsis}</h6>
             <h6 className="news-card-title">{news.url}</h6>
+            <h6 className="news-card-title">{news.Timestamp}</h6>
+            {/* <Timestamp time={Date} /> </h6> */}
 
             <button
               href="#"

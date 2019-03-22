@@ -72,12 +72,12 @@ export default class NewUserReg extends Component {
                         localStorage.setItem("credentials", user.id)
                         sessionStorage.setItem("credentials", user.id)
                         this.props.getUserEvents(parseInt(sessionStorage.getItem("credentials")))
-                        this.props.history.push("/news")
+                        this.props.history.push("/events")
 
                     } else {
                         sessionStorage.setItem("credentials", user.id)
                         this.props.getUserEvents(parseInt(sessionStorage.getItem("credentials")))
-                        this.props.history.push("/news")
+                        this.props.history.push("/events")
                     }
                 }
             )

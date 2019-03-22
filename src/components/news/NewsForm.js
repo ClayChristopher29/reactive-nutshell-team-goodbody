@@ -3,12 +3,15 @@ import React, { Component } from "react";
 import "./News.css";
 import NewsAPIManager from '../../modules/NewsManager'
 
+
+
 export default class NewsForm extends Component {
   // Set initial state
   state = {
     title: "",
     synopsis: "",
-    url: ""
+    url: "",
+    Timestamp: ""
   };
 
   // Update state whenever an input field is edited
@@ -24,6 +27,20 @@ export default class NewsForm extends Component {
      */
   constructNewsArticle = evt => {
     evt.preventDefault();
+
+    const Timestamp = Date.now()
+
+
+
+// const formattedTimestamp = Intl.DateTimeFormat('en-US',{
+//   year: "numeric",
+//   month: "short",
+//   day: "2-digit",
+//   hour: "numeric",
+//   minute: "2-digit",
+//   second: "2-digit"
+// }).format(Timestamp);
+
     if (this.state.title === "") {
       window.alert("Please enter a news article");
     } else {
@@ -31,6 +48,7 @@ export default class NewsForm extends Component {
         title: this.state.title,
         synopsis: this.state.synopsis,
         url: this.state.url,
+        Timestamp: Timestamp,
         userId: sessionStorage.getItem("credentials")
         // Make sure the employeeId is saved to the database as a number since it is a foreign key.
       };

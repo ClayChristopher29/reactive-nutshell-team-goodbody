@@ -18,13 +18,14 @@ class NewsList extends Component {
                 </div>
                 <section className="news">
                     {
-                        this.props.news.map(news => {
+                        this.props.news.reverse().map(news => {
                             if (news.userId === sessionStorage.getItem('credentials')) {
                             return <div key={news.id} className="news-card">
                                 <div className="news-card-body">
                                     <h5 className="news-card-title">
 
                                         {news.title}
+                                        {news.Timestamp}
                                         <Link className="nav-link" to={`/news/${news.id}`}>Details</Link>
                                     </h5>
                                 </div>
