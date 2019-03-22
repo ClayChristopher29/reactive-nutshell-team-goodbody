@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import "./Tasks.css";
+import "../appStyles/applicationStyles.css"
 import TaskAPIManager from "../../modules/TasksManager";
 
 export default class TaskForm extends Component {

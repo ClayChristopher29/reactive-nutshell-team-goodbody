@@ -14,7 +14,7 @@ class TaskList extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="tasksButton">
+                {/* <div className="tasksButton">
                     <button type="button"
                         className="btn btn-success"
                         onClick={() => {
@@ -23,7 +23,7 @@ class TaskList extends Component {
                         }>
                         Add Task
                     </button>
-                </div>
+                </div> */}
                 <section className="tasks">
                     {this.props.tasks.map(task => {
                         return (<div key={task.id} className="tasks-card">
@@ -44,10 +44,21 @@ class TaskList extends Component {
 
                             </div>
                         </div>
+
                         )
                     })
                     }
                 </section>
+                <div className="tasksButton">
+                    <button type="button"
+                        className="btn btn-success"
+                        onClick={() => {
+                            this.props.history.push("/tasks/new")
+                        }
+                        }>
+                        Add Task
+                    </button>
+                </div>
             </React.Fragment>
         );
     }

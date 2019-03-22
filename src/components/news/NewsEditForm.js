@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NewsAPIManager from "../../modules/NewsManager";
-
+import "../appStyles/applicationStyles.css"
 export default class NewsEditForm extends Component {
   // Set initial state
   state = {

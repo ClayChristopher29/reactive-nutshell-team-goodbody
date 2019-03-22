@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ChatManager from "../../modules/chatManager"
-// import chatEdit from "./chatEdit"
+import "../appStyles/applicationStyles.css"
 import chatForm from "./chatForm"
 
 export default class chatList extends Component {
