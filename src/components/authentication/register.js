@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom"
 // import InputMask from 'react-input-mask';
 // import "./login.css";
 import userAPIManager from '../../modules/UserManager'
-
+import "../appStyles/applicationStyles.css"
 export default class NewUserReg extends Component {
     // Set initial state
     state = {
@@ -87,7 +87,7 @@ export default class NewUserReg extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleRegister}>
+            <form className="loginForm" onSubmit={this.handleRegister}>
                 <h1>Welcome to Nutshell!</h1>
                 <h2 className="h3 mb-3 font-weight-normal">Register New User</h2>
                 <br />

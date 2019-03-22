@@ -76,7 +76,7 @@ if(singleMessage.userId === sessionStorage.getItem("credentials")){
 
     else {
         return <div key={singleMessage.id}>
-            <div>{singleMessage.name}{": "}{singleMessage.message}</div>
+            <div>{singleMessage.user.name}{": "}{singleMessage.message}</div>
 
 
             <button type="button"
@@ -95,7 +95,7 @@ if(singleMessage.userId === sessionStorage.getItem("credentials")){
 }
 else {
     return <div key={singleMessage.id}>
-             <div>{singleMessage.name}{": "}{singleMessage.message}</div>
+             <div>{singleMessage.user.name}{": "}{singleMessage.message}</div>
         </div>
 }
 

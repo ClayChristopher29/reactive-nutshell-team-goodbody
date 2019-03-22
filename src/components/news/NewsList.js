@@ -32,7 +32,7 @@ class NewsList extends Component {
                             }
                         }
                         )}
-                    }
+
                 </section>
             </React.Fragment>
         );
