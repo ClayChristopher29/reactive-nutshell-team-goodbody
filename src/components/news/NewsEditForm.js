@@ -7,7 +7,6 @@ export default class NewsEditForm extends Component {
     title: "",
     synopsis: "",
     url: "",
-    Timestamp: "",
     userId: sessionStorage.getItem("credentials")
   };
 
@@ -28,7 +27,6 @@ export default class NewsEditForm extends Component {
         title: this.state.title,
         synopsis: this.state.synopsis,
         url: this.state.url,
-        Timestamp: this.state.Timestamp,
         userId: this.state.userId
         // newsId: parseInt(this.state.newsId)
       };

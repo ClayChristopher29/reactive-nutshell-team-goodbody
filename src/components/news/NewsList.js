@@ -25,7 +25,6 @@ class NewsList extends Component {
                                     <h5 className="news-card-title">
 
                                         {news.title}
-                                        {news.Timestamp}
                                         <Link className="nav-link" to={`/news/${news.id}`}>Details</Link>
                                     </h5>
                                 </div>
